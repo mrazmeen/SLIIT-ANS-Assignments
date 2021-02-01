@@ -58,7 +58,7 @@ class MultiHandler extends Thread{
                 dos.writeUTF(clientmessage);
                 System.out.println("responese of "+" "+clientname+" "+clientmessage);
             }catch(Exception e){
-
+                    e.printStackTrace();
             }
         }
         try{
