@@ -16,7 +16,7 @@ public class MultiClient1 {
 
             while (true){
                 System.out.println(dis.readUTF());
-                String toSend=sc.nextLine();
+                String toSend="MC-1:"+sc.nextLine();
                 dos.writeUTF(toSend);
 
                 if (toSend.equals("exit")){

@@ -10,6 +10,7 @@ public class Server {
         System.out.println("Server socket"+serverSocket);
         while (true){
             Socket socket= null;
+
             try {
                 socket=serverSocket.accept();
                 System.out.println("A new client is connected"+socket);
@@ -44,15 +45,18 @@ class MultiHandler extends Thread{
             try{
                 dos.writeUTF("Send message to server (Type exit to terminate connection)");
                 recieved =dis.readUTF();
-                if(recieved.equals("exit")){
+                String[] st= recieved.split(":");
+                String clientname=st[0];
+                String clientmessage=st[1];
+                if(clientmessage.equals("exit")){
                     System.out.println("client"+this.socket+"sends exit");
                     System.out.println("closing the connection");
                     this.socket.close();
                     System.out.println("Connection closed");
                     break;
                 }
-                dos.writeUTF(recieved);
-                System.out.println("responese of client"+recieved);
+                dos.writeUTF(clientmessage);
+                System.out.println("responese of "+" "+clientname+" "+clientmessage);
             }catch(Exception e){
 
             }
