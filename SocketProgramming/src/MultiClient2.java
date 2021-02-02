@@ -25,7 +25,7 @@ public class MultiClient2 {
                     break;
                 }
                 String recieved= dis.readUTF();
-                System.out.println("Server Says"+recieved);
+                System.out.println("Server Says" + " " + recieved);
             }
             sc.close();
             dis.close();

@@ -44,19 +44,21 @@ class MultiHandler extends Thread{
         while (true){
             try{
                 dos.writeUTF("Send message to server (Type exit to terminate connection)");
-                recieved =dis.readUTF();
-                String[] st= recieved.split(":");
-                String clientname=st[0];
-                String clientmessage=st[1];
-                if(clientmessage.equals("exit")){
-                    System.out.println("client"+this.socket+"sends exit");
+                recieved = dis.readUTF();
+                String[] st = recieved.split(":");
+                String clientname = st[0];
+                String clientmessage = st[1];
+                int value = Integer.parseInt(clientmessage);
+                int result = value - 1;
+                if (clientmessage.equals("exit")) {
+                    System.out.println("client" + this.socket + "sends exit");
                     System.out.println("closing the connection");
                     this.socket.close();
                     System.out.println("Connection closed");
                     break;
                 }
-                dos.writeUTF(clientmessage);
-                System.out.println("responese of "+" "+clientname+" "+clientmessage);
+                dos.writeUTF(String.valueOf(result));
+                System.out.println("responese of " + " " + clientname + " " + result);
             }catch(Exception e){
                     e.printStackTrace();
             }
